@@ -49,7 +49,6 @@ jobs:
         if: ${{always()}}
         with:
           args: |
-            >>> cmd1 status: ${{steps.cmd_id1.outcome}}
-             cmd2 status: ${{steps.cmd_id2.outcome}}
+            >>> status: ${{steps.cmd_id1.outcome && :white_check_mark: || :x:}} ${{steps.cmd_id1.outcome}}
              url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
