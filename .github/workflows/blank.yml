@@ -49,7 +49,7 @@ jobs:
         if: ${{always()}}
         with:
           args: |
-            > cmd1 status: ${{step.cmd_id1.outcome}}
-            > cmd2 status: ${{step.cmd_id2.outcome}}
-            url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
+            >>> cmd1 status: ${{steps.cmd_id1.outcome}}
+             cmd2 status: ${{steps.cmd_id2.outcome}}
+             url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
