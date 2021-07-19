@@ -42,5 +42,5 @@ jobs:
         uses: Ilshidur/action-discord@master
         if: ${{always() && (steps.cmd_id.outcome == 'success')}}
         with:
-          args: cmd success https://github.com/${{$github.repository}}/actions/runs/${{github.run_id}}
+          args: cmd success https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
