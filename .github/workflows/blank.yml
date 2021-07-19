@@ -24,9 +24,13 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        id: cmd_id
-        run: fdas
+        id: cmd_id1
+        run: echo ss
         
+      - name: Run a one-line script
+        id: cmd_id2
+        run: echo ss
+
       # Runs a set of commands using the runners shell
       - name: CMD fail
         env:
@@ -42,9 +46,10 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@master
-        if: ${{always() && (steps.cmd_id.outcome == 'success')}}
+        if: ${{always()}}
         with:
           args: |
-            > cmd success 
+            > cmd1 status: ${{step.cmd_id1.outcome}}
+            > cmd2 status: ${{step.cmd_id2.outcome}}
             url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
