@@ -26,11 +26,15 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - uses: actions/checkout@v2
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: cargo-audit
+          version: latest
+
       - uses: actions-rs/install@v0.1
         with:
           crate: cargo2junit
           version: latest
-
         
       - run: echo "finish"
+      
