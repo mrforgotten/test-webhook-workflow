@@ -20,9 +20,9 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Run a one-line failure
         id: cmd_id1
-        run: echo ss
+        run: adsf
         
       - name: Run a one-line script
         id: cmd_id2
@@ -38,7 +38,13 @@ jobs:
           args: |
             > cmd failure 
             url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
-          
+      
+      - name: if failure
+        id: is_failure
+        if: failure()
+        env: 
+          status: true
+
       - name: CMD success
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -46,7 +52,7 @@ jobs:
         if: ${{ always() }}
         with:
           args: |
-            >>> status: ${{ success() && ':x: ***failure detected***!!! @everyone' || ':white_check_mark: test is ***clean***' }}
+            >>> status: ${{ steps.is_failure.env.status && ':x: ***failure detected***!!! @everyone' || ':white_check_mark: test is ***clean***' }}
             "        "- ${{steps.cmd_id1.outcome && ':white_check_mark:' || ':x:'}} ${{steps.cmd_id1.outcome}}
              url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
