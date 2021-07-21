@@ -5,7 +5,7 @@ on:
       - main
 
   workflow_dispatch:
-    input:
+    inputs:
       notify_discord:
         description: notify discord message yes/no
         required: true
