@@ -55,6 +55,7 @@ jobs:
       - name: failure command 
         run: asdf
         id: failure1
-
+        continue-on-error: true
+        
       - run: echo "failure or ${{steps.success1.outcome}} or ${{steps.failure1.outcome}} should be ${{ true ||steps.success1.outcome != 'success' || steps.failure1.outcome != 'success'}} and this echo should run."
         if: ${{ failure() || steps.success1.outcome != 'success' || steps.failure1.outcome != 'success' }}
