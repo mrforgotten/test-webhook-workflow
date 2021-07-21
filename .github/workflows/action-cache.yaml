@@ -14,5 +14,8 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-          components: rustfmt, clippy, cargo2junit
-    
+          components: rustfmt, clippy
+
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: cargo2junit
