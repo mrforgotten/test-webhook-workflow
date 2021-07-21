@@ -18,11 +18,9 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('**/*/*') }}
+          key: ${{ runner.os }}-cargo-bin-v2-${{ hashFiles('**/*/*') }}
           restore-keys: |
-            ${{ runner.os }}-cargo-bin-
-            ${{ runner.os }}-cargo-
-            ${{ runner.os }}-
+            ${{ runner.os }}-cargo-bin-v2
 
       - uses: actions-rs/toolchain@v1
         with:
