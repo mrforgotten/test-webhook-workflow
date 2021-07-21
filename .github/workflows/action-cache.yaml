@@ -16,7 +16,7 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - name: Cache node modules
+      - name: Cache cargo bin
         uses: actions/cache@v2
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
