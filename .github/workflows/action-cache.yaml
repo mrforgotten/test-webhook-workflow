@@ -12,7 +12,12 @@ jobs:
       - name: Cache cargo bin
         uses: actions/cache@v2
         with:
-          path: ~/.cargo/bin/
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
           key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-
@@ -30,7 +35,7 @@ jobs:
         with:
           crate: cargo-audit
           version: latest
-        continue-on-error: true
+        # continue-on-error: true
 
       - uses: actions-rs/install@v0.1
         with:
@@ -42,7 +47,7 @@ jobs:
         with:
           crate: cargo2junit
           version: latest
-        continue-on-error: true
+        # continue-on-error: true
 
       - run: echo "finish"
       
