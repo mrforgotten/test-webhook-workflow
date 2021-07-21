@@ -43,20 +43,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v1
 
-      - uses: actions-rs/install@v0.1
-        with:
-          crate: cargo-audit
-          version: latest
-
-      - uses: actions-rs/install@v0.1
-        with:
-          crate: cargo-update
-          version: latest
-
-      - uses: actions-rs/install@v0.1
-        with:
-          crate: cargo2junit
-          version: latest
+      - run: cargo install cargo2junit
 
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
