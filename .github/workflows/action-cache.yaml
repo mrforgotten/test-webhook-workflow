@@ -5,10 +5,12 @@ on:
       - main
 
   workflow_dispatch:
-    notify_discord:
-      description: notify discord message yes/no
-      required: true
-      default: 'no'
+    input:
+      notify_discord:
+        description: notify discord message yes/no
+        required: true
+        default: 'no'
+
 jobs:
   build-test:
     runs-on: ubuntu-20.04
