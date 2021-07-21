@@ -57,4 +57,5 @@ jobs:
 
       - run: echo "finish"
       
-      - run: echo "${{ github.event.inputs.notify_discord=='' && true || false }}"
+      - run: echo "${{ github.event.inputs.notify_discord=='' && false || true }}"
+        if: ${{ always() && github.event.inputs.notify_discord=='' && false || true }}
