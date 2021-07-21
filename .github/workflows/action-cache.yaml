@@ -1,4 +1,4 @@
-name: on-schedule
+name: actions-rs-test
 on:
   workflow_dispatch:
 jobs:
