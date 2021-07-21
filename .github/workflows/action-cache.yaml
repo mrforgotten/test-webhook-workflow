@@ -16,6 +16,13 @@ jobs:
           override: true
           components: rustfmt, clippy
 
-      - uses: actions-rs/install@v0.1
+      - name: Cache node modules
+        uses: actions/cache@v2
         with:
-          crate: cargo2junit
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.cargo/bin/
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-bin-
+            ${{ runner.os }}-cargo-
+            ${{ runner.os }}-
