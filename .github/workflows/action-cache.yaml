@@ -1,6 +1,14 @@
 name: actions-rs-test
 on:
+  push:
+    branches:
+      - main
+
   workflow_dispatch:
+    notify_discord:
+      description: notify discord message yes/no
+      required: true
+      default: 'no'
 jobs:
   build-test:
     runs-on: ubuntu-20.04
@@ -19,7 +27,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-bin-v2-${{ hashFiles('**/*/*') }}
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('cargo.*') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-v2
 
@@ -47,3 +55,4 @@ jobs:
 
       - run: echo "finish"
       
+      - run: echo "${{ github.event.inputs.notify_discord }}"
