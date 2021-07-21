@@ -26,3 +26,5 @@ jobs:
             ${{ runner.os }}-cargo-bin-
             ${{ runner.os }}-cargo-
             ${{ runner.os }}-
+
+      - run: cargo install cargo2junit
