@@ -48,5 +48,5 @@ jobs:
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
 
-      - run: echo "'false' 'false' 'true' should be ' get true' ${{false || false || true}}"
-        if: false || false || true
+      - run: echo "'false' 'false' 'true' should be 'true', get ${{false || false || true}}"
+        if: ${{ false || false || true }}
