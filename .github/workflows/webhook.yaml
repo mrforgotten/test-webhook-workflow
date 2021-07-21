@@ -52,6 +52,7 @@ jobs:
         with:
           args: |
             >>> status: ${{ ( steps.is_failure.outcome == 'success' ) && ':x: ***failure detected***!!! @everyone' || ':white_check_mark: test is ***clean***' }}
-            "        "- ${{steps.cmd_id1.outcome && ':white_check_mark:' || ':x:'}} ${{steps.cmd_id1.outcome}}
+            "        "- ${{steps.cmd_id1.outcome == 'success' && ':white_check_mark:' || ':x:'}} ${{steps.cmd_id1.outcome}}
+            "        "- ${{steps.cmd_id2.outcome == 'success' && ':white_check_mark:' || ':x:'}} ${{steps.cmd_id2.outcome}}
              url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
