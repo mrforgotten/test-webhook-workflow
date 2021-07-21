@@ -57,5 +57,5 @@ jobs:
 
       - run: echo "finish"
       
-      - run: echo "echo no yes? = ${{ github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord != 'no' && true || false }}"
-        if: ${{ always() && github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord != 'no' && true || false }}
+      - run: echo "echo no yes? = ${{ [ github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  != 'no' ] != 'no' && true || false }}"
+        if: ${{ always() && [ github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  != 'no' ] && true || false }}
