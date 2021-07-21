@@ -24,12 +24,13 @@ jobs:
         with:
           path: |
             ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('cargo.*') }}
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*/*') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-
 
@@ -54,10 +55,7 @@ jobs:
         with:
           crate: cargo2junit
           version: latest
-      
-      - run: | 
-          jq ${{ github.event }}
-          echo "event type ${{ github.event. }}"
 
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
+        
