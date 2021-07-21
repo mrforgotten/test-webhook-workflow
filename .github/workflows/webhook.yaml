@@ -42,8 +42,6 @@ jobs:
       - name: if failure
         id: is_failure
         if: failure()
-        env: 
-          status: true
 
       - name: CMD success
         env:
@@ -52,7 +50,7 @@ jobs:
         if: ${{ always() }}
         with:
           args: |
-            >>> status: ${{ steps.is_failure.env.status && ':x: ***failure detected***!!! @everyone' || ':white_check_mark: test is ***clean***' }}
+            >>> status: ${{ steps.is_failure.outcome == true && ':x: ***failure detected***!!! @everyone' || ':white_check_mark: test is ***clean***' }}
             "        "- ${{steps.cmd_id1.outcome && ':white_check_mark:' || ':x:'}} ${{steps.cmd_id1.outcome}}
              url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
 
