@@ -30,11 +30,19 @@ jobs:
         with:
           crate: cargo-audit
           version: latest
+        continue-on-error: true
+
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: cargo-update
+          version: latest
+        # continue-on-error: true
 
       - uses: actions-rs/install@v0.1
         with:
           crate: cargo2junit
           version: latest
-        
+        continue-on-error: true
+
       - run: echo "finish"
       
