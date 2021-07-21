@@ -23,6 +23,7 @@ jobs:
       - name: Run a one-line failure
         id: cmd_id1
         run: adsf
+        continue-on-error: true
         
       - name: Run a one-line script
         id: cmd_id2
