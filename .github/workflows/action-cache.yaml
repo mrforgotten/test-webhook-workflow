@@ -55,7 +55,7 @@ jobs:
           crate: cargo2junit
           version: latest
 
-      - run: echo "${{ always() }}"
+      - run: echo "always ${{ always() }}"
       
       - run: echo "echo no yes? = ${{ ( always() && ( github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  != 'no' )) != 'no' && true || false }}"
         if: ${{ ( always() && ( github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  != 'no' )) && true || false }}
