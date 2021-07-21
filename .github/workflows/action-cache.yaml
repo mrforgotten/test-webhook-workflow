@@ -54,8 +54,8 @@ jobs:
         with:
           crate: cargo2junit
           version: latest
-
-      - run: echo "event type ${{ github.event.action }}"
-
+      
+      - run: echo "event type ${{ github.event.actions }}"
+      
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
