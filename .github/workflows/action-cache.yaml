@@ -41,6 +41,8 @@ jobs:
           override: true
           components: rustfmt, clippy
 
+      - uses: Swatinem/rust-cache@v1
+
       - uses: actions-rs/install@v0.1
         with:
           crate: cargo-audit
@@ -58,4 +60,3 @@ jobs:
 
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
-        
