@@ -31,7 +31,7 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-bin-${{ hashFiles('cargo.*') }}
           restore-keys: |
-            ${{ runner.os }}-cargo-bin-v2
+            ${{ runner.os }}-cargo-bin-
 
       - uses: actions-rs/toolchain@v1
         with:
@@ -57,7 +57,7 @@ jobs:
       
       - run: | 
           jq ${{ github.event }}
-          echo "event type ${{ github.event }}"
+          echo "event type ${{ github.event. }}"
 
       - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
         if: ${{  always() && (( github.event.inputs.notify_discord == '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
