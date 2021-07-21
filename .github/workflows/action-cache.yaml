@@ -26,9 +26,11 @@ jobs:
           override: true
           components: rustfmt, clippy
 
+      - uses: actions/checkout@v2
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: cargo2junit
+          version: latest
 
-      - name: install cargo2junit
-        run: cargo install cargo2junit -q
-        continue-on-error: true
         
       - run: echo "finish"
