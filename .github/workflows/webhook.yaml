@@ -39,8 +39,9 @@ jobs:
             > cmd failure 
             url: https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
       
-      - name: if failure
+      - name: if success skip this step
         id: is_failure
+        run: echo Failure detected
         if: failure()
 
       - name: CMD success
