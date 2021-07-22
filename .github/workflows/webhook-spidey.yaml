@@ -5,7 +5,11 @@ name: webhook_spidey
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   workflow_dispatch:
-
+    inputs:
+      gif_url:
+        required: true
+      mention_user:
+        default: "<@288714385705140225>"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -27,5 +31,5 @@ jobs:
         with:
           args: |
             >>> status: SpIdEr
-            link: "http://gph.is/2nmvrEJ"
-            "<@288714385705140225>"
+            link: ${{github.event.inputs.gif_url}}
+            ${{github.event.inputs.mention_user}}
