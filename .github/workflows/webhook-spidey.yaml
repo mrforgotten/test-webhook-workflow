@@ -53,4 +53,4 @@ jobs:
           args: |
             >>> status: SpIdEr
             link: "http://gph.is/2nmvrEJ"
-            "@<288714385705140225>"
+            "<@288714385705140225>"
