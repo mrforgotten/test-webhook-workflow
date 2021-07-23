@@ -8,7 +8,7 @@ on:
     inputs:
       notify_discord:
         description: notify discord message yes/no
-        required: true
+        required: false
         default: 'no'
 
 jobs:
