@@ -45,8 +45,8 @@ jobs:
 
       - run: cargo install cargo2junit
 
-      - run: echo "echo no yes? = ${{ ( ( github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  == 'no' )&& 'no' || 'yes' ) !='no' }}"
-        if: ${{  always() && (( github.event.inputs.notify_discord != '' || github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
+      - run: echo "echo no yes? = ${{ ((github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) !='no' }}"
+        if: ${{  always() && ((github.event.inputs.notify_discord  == 'no' ) && 'no' || 'yes' ) != 'no' }}
 
       - name: success command 
         run: echo success
