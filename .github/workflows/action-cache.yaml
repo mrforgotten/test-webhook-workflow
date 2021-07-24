@@ -9,7 +9,7 @@ on:
       notify_discord:
         description: notify discord message yes/no
         required: false
-        default: 'no'
+        default: ''
 
 jobs:
   build-test:
