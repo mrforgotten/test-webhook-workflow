@@ -28,7 +28,7 @@ jobs:
             /usr/share/rust/.cargo/bin/
             ~/.cargo/.crates.toml
             ~/.cargo/.crates2.json
-            ~/.cargo/bin/
+            ~/.cargo/bin/*
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
