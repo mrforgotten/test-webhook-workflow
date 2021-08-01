@@ -39,7 +39,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             ./target
-          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('/usr/share/rust/.cargo/.crates2.json', './target', '**/Cargo.lock', '/usr/share/rust/.cargo/bin/*') }}
+          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('/usr/share/rust/.cargo/.crates2.json','**/Cargo.lock') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-v1-
 
