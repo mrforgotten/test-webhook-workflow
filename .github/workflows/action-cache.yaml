@@ -52,6 +52,12 @@ jobs:
         run: echo success
         id: success1
 
+      - name: cargo build
+        run: cargo build
+
+      - name: cargo run
+        run: cargo run
+        
       # - name: failure command 
       #   run: asdf
       #   id: failure1
