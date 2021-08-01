@@ -19,20 +19,22 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Cache cargo bin
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/.crates.toml
-            ~/.cargo/.crates2.json
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*/*') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-bin-
+      - uses: Swatinem/rust-cache@v1
+
+      # - name: Cache cargo bin
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       ~/.cargo/.crates.toml
+      #       ~/.cargo/.crates2.json
+      #       ~/.cargo/bin/
+      #       ~/.cargo/registry/index/
+      #       ~/.cargo/registry/cache/
+      #       ~/.cargo/git/db/
+      #       target/
+      #     key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*/*') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-cargo-bin-
 
       - uses: actions-rs/toolchain@v1
         with:
@@ -40,8 +42,6 @@ jobs:
           toolchain: stable
           override: true
           components: rustfmt, clippy
-
-      - uses: Swatinem/rust-cache@v1
 
       - run: cargo install cargo2junit
 
@@ -52,11 +52,11 @@ jobs:
         run: echo success
         id: success1
 
-      - name: failure command 
-        run: asdf
-        id: failure1
-        continue-on-error: true
+      # - name: failure command 
+      #   run: asdf
+      #   id: failure1
+      #   continue-on-error: true
         
-      - run: echo "failure or ${{steps.success1.outcome}} or ${{steps.failure1.outcome}} should be ${{ true ||steps.success1.outcome != 'success' || steps.failure1.outcome != 'success'}} and this echo should run."
-        if: ${{ failure() || steps.success1.outcome != 'success' || steps.failure1.outcome != 'success' }}
+      # - run: echo "failure or ${{steps.success1.outcome}} or ${{steps.failure1.outcome}} should be ${{ true ||steps.success1.outcome != 'success' || steps.failure1.outcome != 'success'}} and this echo should run."
+      #   if: ${{ failure() || steps.success1.outcome != 'success' || steps.failure1.outcome != 'success' }}
  
