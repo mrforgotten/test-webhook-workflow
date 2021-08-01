@@ -32,9 +32,9 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             ./target
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo', './target') }}
+          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('~/.cargo', './target', '**/Cargo.lock') }}
           restore-keys: |
-            ${{ runner.os }}-cargo-bin-
+            ${{ runner.os }}-cargo-bin-v1-
 
       - uses: actions-rs/toolchain@v1
         with:
