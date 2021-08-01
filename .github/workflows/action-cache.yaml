@@ -25,6 +25,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
+            /usr/share/rust/.cargo/bin/
             ~/.cargo/.crates.toml
             ~/.cargo/.crates2.json
             ~/.cargo/bin/
@@ -32,7 +33,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             ./target
-          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('~/.cargo/**/cargo', './target', '**/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('~/.cargo/**/cargo', './target', '**/Cargo.lock', '/usr/share/rust/.cargo/bin/*') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-v1-
 
