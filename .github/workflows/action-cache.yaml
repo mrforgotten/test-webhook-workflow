@@ -19,22 +19,22 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: Swatinem/rust-cache@v1
+      # - uses: Swatinem/rust-cache@v1
 
-      # - name: Cache cargo bin
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: |
-      #       ~/.cargo/.crates.toml
-      #       ~/.cargo/.crates2.json
-      #       ~/.cargo/bin/
-      #       ~/.cargo/registry/index/
-      #       ~/.cargo/registry/cache/
-      #       ~/.cargo/git/db/
-      #       target/
-      #     key: ${{ runner.os }}-cargo-bin-${{ hashFiles('*/*') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-cargo-bin-
+      - name: Cache cargo bin
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/.crates.toml
+            ~/.cargo/.crates2.json
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            ./target
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo/*', './target') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-bin-
 
       - uses: actions-rs/toolchain@v1
         with:
@@ -57,7 +57,7 @@ jobs:
 
       - name: cargo run
         run: cargo run
-        
+
       # - name: failure command 
       #   run: asdf
       #   id: failure1
