@@ -21,28 +21,24 @@ jobs:
 
       # - uses: Swatinem/rust-cache@v1
 
-      - name: Cache cargo bin
-        uses: actions/cache@v2
-        with:
-          path: |
-            /usr/share/rust/.cargo/.crates.toml
-            /usr/share/rust/.cargo/.crates2.json
-            /usr/share/rust/.cargo/registry/index
-            /usr/share/rust/.cargo/registry/cache
-            /usr/share/rust/.cargo/git/db
-            /usr/share/rust/.cargo/bin/
-            ./target
-          key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('./target/rustc_info.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-bin-v1-
+      # - name: Cache cargo bin
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: |
+      #       /usr/share/rust/.cargo/.crates.toml
+      #       /usr/share/rust/.cargo/.crates2.json
+      #       /usr/share/rust/.cargo/registry/index
+      #       /usr/share/rust/.cargo/registry/cache
+      #       /usr/share/rust/.cargo/git/db
+      #       /usr/share/rust/.cargo/bin/
+      #       ./target
+      #     key: ${{ runner.os }}-cargo-bin-v1-${{ hashFiles('./target/rustc_info.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-cargo-bin-v1-
 
-
-      - uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
-          components: rustfmt, clippy
+      - run: cargo fmt
+      - run: cargo audit
+      - run: cargo clippy
 
       - run: cargo install cargo2junit --version 0.1.6 
 
