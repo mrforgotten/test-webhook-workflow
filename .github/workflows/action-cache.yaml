@@ -32,7 +32,7 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             ./target
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo/*', './target') }}
+          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo', './target') }}
           restore-keys: |
             ${{ runner.os }}-cargo-bin-
 
