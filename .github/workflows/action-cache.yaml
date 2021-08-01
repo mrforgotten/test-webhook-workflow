@@ -26,9 +26,15 @@ jobs:
         with:
           path: |
             /usr/share/rust/.cargo/bin/
+            /usr/share/rust/.crates.toml
+            /usr/share/rust/.cargo/.crates2.json
+            /usr/share/rust/.cargo/bin/
+            /usr/share/rust/.cargo/registry/index/
+            /usr/share/rust/.cargo/registry/cache/
+            /usr/share/rust/.cargo/git/db/
             ~/.cargo/.crates.toml
             ~/.cargo/.crates2.json
-            ~/.cargo/bin/*
+            ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
@@ -52,6 +58,8 @@ jobs:
       - name: success command 
         run: echo success
         id: success1
+
+
 
       - name: cargo build
         run: cargo build
