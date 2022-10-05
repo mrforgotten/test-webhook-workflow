@@ -1,0 +1,35 @@
+
+name: webhook_spidey
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  workflow_dispatch:
+    inputs:
+      gif_url:
+        required: true
+      mention_user:
+        default: "<@${{secret.DEFAULT_DISCORD_SPIDEY_MENTION_USER}}>"
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  webhooktest:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: CMD success
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_SPIDEY }}
+        uses: Ilshidur/action-discord@master
+        if: ${{ always() }}
+        with:
+          args: |
+            >>> status: SpIdEr
+            link: ${{github.event.inputs.gif_url}}
+            ${{github.event.inputs.mention_user}}
