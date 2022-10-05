@@ -9,7 +9,7 @@ on:
       gif_url:
         required: true
       mention_user:
-        default: "<@288714385705140225>"
+        default: "<@${{secret.DEFAULT_DISCORD_SPIDEY_MENTION_USER}}>"
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
