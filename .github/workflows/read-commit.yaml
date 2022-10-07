@@ -2,7 +2,7 @@
 name: Read commit
 # Controls when the workflow will run
 # workflow run name
-run-name: Run Read Commit for ${{ format('branch "{0}", commit MSG "{1}"'), github.ref_name, github.event.head_commit.message }} 
+run-name: Run Read Commit for ${{ format('branch "{0}", commit MSG "{1}"', github.ref_name, github.event.head_commit.message) }} 
 
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
