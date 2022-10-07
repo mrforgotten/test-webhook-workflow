@@ -34,7 +34,7 @@ jobs:
       #     echo test, and deploy your project.
 
       - name: Skip this step on commit "[no action]"
-        if: contains(github.event.head_commit.message, '[no action]') === false
+        if: contains(github.event.head_commit.message, '[no action]') == false
         run: |
           echo "Commit message not contains '[no action]'"
 
