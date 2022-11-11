@@ -9,7 +9,7 @@ on:
       gif_url:
         required: true
       mention_user:
-        default: "<@${{secrets.DEFAULT_DISCORD_SPIDEY_MENTION_USER}}>"
+        default: ""
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -32,4 +32,4 @@ jobs:
           args: |
             >>> status: SpIdEr
             link: ${{github.event.inputs.gif_url}}
-            ${{github.event.inputs.mention_user}}
+            <@${{ ( github.event.inputs.mention_user == '' ) || secrets.DEFAULT_DISCORD_SPIDEY_MENTION_USER }}>
